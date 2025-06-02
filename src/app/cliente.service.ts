@@ -29,6 +29,16 @@ export class ClienteService {
     return clientes.find(cliente => cliente.id === id);
   }
 
+  atualizar(cliente: Cliente) {
+    const storage = this.obterStorage();
+    storage.forEach(clienteParaAtualizar => {
+      if (clienteParaAtualizar.id === cliente.id) {
+        Object.assign(clienteParaAtualizar, cliente);
+      }
+    })
+    localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
+  }
+
   private obterStorage(): Cliente[] {
     const repositorioClientes = localStorage.getItem(ClienteService.REPO_CLIENTES);
     if (repositorioClientes) {
