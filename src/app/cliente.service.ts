@@ -13,7 +13,6 @@ export class ClienteService {
   salvar(cliente: Cliente) {
     const storage = this.obterStorage();
     storage.push(cliente);
-
     localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
   }
 
@@ -22,8 +21,12 @@ export class ClienteService {
     if (!nomeBusca) {
       return clientes;
     }
-    console.log('nomeBusca = ', nomeBusca)
     return clientes.filter(cliente => cliente.nome?.indexOf(nomeBusca) !== -1);
+  }
+
+  buscarClientePorId(id: string) : Cliente | undefined  {
+    const clientes = this.obterStorage();
+    return clientes.find(cliente => cliente.id === id);
   }
 
   private obterStorage(): Cliente[] {
