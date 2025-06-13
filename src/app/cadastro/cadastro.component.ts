@@ -7,12 +7,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 import { Cliente } from './cliente';
 import { ClienteService } from '../cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { BrasilapiService } from '../brasilapi.service';
 import { Estado, Municipio } from '../brasilapi.models';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro',
@@ -24,6 +26,8 @@ import { Estado, Municipio } from '../brasilapi.models';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    MatSelectModule,
+    CommonModule,
     NgxMaskDirective
   ],
   providers: [
